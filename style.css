@@ -1,0 +1,155 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    font-family: "Microsoft YaHei", sans-serif;
+    background: linear-gradient(135deg, #ffd6e7, #ffe9c9, #dff5ff);
+}
+
+.birthday-container {
+    position: relative;
+    width: 90%;
+    max-width: 700px;
+    padding: 50px 30px;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.75);
+    border-radius: 30px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+}
+
+h1 {
+    margin-bottom: 15px;
+    font-size: 48px;
+    color: #ff5c8a;
+}
+
+.subtitle {
+    margin-bottom: 25px;
+    font-size: 24px;
+    color: #666;
+}
+
+.cake {
+    margin: 20px 0;
+    font-size: 100px;
+    animation: cakeBounce 2s infinite;
+}
+
+button {
+    padding: 15px 30px;
+    border: none;
+    border-radius: 50px;
+    font-size: 18px;
+    color: white;
+    background: #ff6f91;
+    cursor: pointer;
+    box-shadow: 0 8px 20px rgba(255, 111, 145, 0.35);
+    transition: 0.3s;
+}
+
+button:hover {
+    transform: scale(1.08);
+    background: #ff4f7b;
+}
+
+#message {
+    margin-top: 30px;
+    padding: 25px;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.8);
+}
+
+#message h2 {
+    margin-bottom: 15px;
+    color: #ff5c8a;
+}
+
+#message p {
+    line-height: 2;
+    font-size: 18px;
+    color: #555;
+}
+
+.love {
+    margin-top: 15px;
+    font-weight: bold;
+}
+
+.hidden {
+    display: none;
+}
+
+.balloons {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+}
+
+.balloon {
+    position: absolute;
+    font-size: 55px;
+    animation: float 4s ease-in-out infinite;
+}
+
+.balloon1 {
+    top: -35px;
+    left: 30px;
+}
+
+.balloon2 {
+    top: -20px;
+    right: 50px;
+    animation-delay: 1s;
+}
+
+.balloon3 {
+    bottom: 20px;
+    left: -20px;
+    animation-delay: 2s;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0) rotate(-5deg);
+    }
+
+    50% {
+        transform: translateY(-20px) rotate(5deg);
+    }
+}
+
+@keyframes cakeBounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+@media (max-width: 600px) {
+    h1 {
+        font-size: 34px;
+    }
+
+    .subtitle {
+        font-size: 20px;
+    }
+
+    .cake {
+        font-size: 80px;
+    }
+
+    .birthday-container {
+        padding: 40px 20px;
+    }
+}
