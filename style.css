@@ -315,18 +315,21 @@ button:hover {
     border-radius: 50%;
     border: 6px solid white;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-    animation: photoAppear 1s ease;
+    opacity: 1; 
+    filter: none;
+    animation: photoAppear 6s linear infinite;
+    transform-origin: center center;
 }
 
 @keyframes photoAppear {
     0% {
         opacity: 0;
-        transform: scale(0.5) rotate(-10deg);
+        transform: rotate(0deg);
     }
 
     100% {
         opacity: 1;
-        transform: scale(1) rotate(0);
+        transform: rotate(360deg);
     }
 }
 
@@ -336,6 +339,7 @@ button:hover {
         height: 160px;
     }
 }
+
 
 /* ===== 写给你的话 ===== */
 

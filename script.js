@@ -204,7 +204,7 @@ function createFireworks() {
 function typeLetter() {
 
     const text =
-`生日快乐！🎉
+`生日快乐！🐭
 
 新的一岁，希望你可以继续做自己喜欢的事情，
 去见想见的人，去看想看的风景。
