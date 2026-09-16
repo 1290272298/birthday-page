@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,7 +9,11 @@
 </head>
 
 <body>
-
+        <div id="fireworkVideo" class="firework-video hidden">
+            <video id="fireworkMovie" muted playsinline loop>
+                <source src="video/birthday.mp4" type="video/mp4">
+            </video>
+        </div>
     <div class="birthday-container">
 
         <div class="balloons">
@@ -27,19 +32,38 @@
             🎂
         </div>
 
+        <!-- <div class="gift-container">
+            <div id="giftBox" class="gift-box">
+                🎁
+            </div>
+
+            <p class="gift-text">
+                点击礼物，打开生日惊喜
+            </p>
+        </div> -->
+
         <button id="surpriseButton">
-            🎁 点击打开生日祝福
+            🎁 打开礼物
+        </button>
+
+        <audio id="bgMusic" loop preload="auto">
+            <source src="music/birthday.mp3" type="audio/mpeg">
+        </audio>
+
+        <button id="musicControl" class="music-control">
+            🎵
         </button>
 
         <div id="message" class="hidden">
-            <h2>✨ 给你的一份特别祝福 ✨</h2>
-
-            <p>
-                生日快乐！🎉<br>
-                愿你新的一岁，<br>
-                有惊喜、有快乐、有温柔相伴。<br>
-                愿所有美好都如期而至。🌸
-            </p>
+            <div class="photo-section">
+                <img
+                    src="images/birthday-photo.jpg"
+                    alt="生日照片"
+                    class="birthday-photo"
+                >
+            </div>
+            <h2>✨ 写给你的话 ✨</h2>
+            <p id="letterText" class="letter-text"></p>
 
             <p class="love">
                 ❤️ 愿你每天都开心，永远被幸福包围！❤️
@@ -51,4 +75,5 @@
     <script src="script.js"></script>
 
 </body>
+
 </html>

@@ -4,7 +4,7 @@
     box-sizing: border-box;
 }
 
-body {
+/* body {
     min-height: 100vh;
     display: flex;
     justify-content: center;
@@ -12,9 +12,20 @@ body {
     overflow: hidden;
     font-family: "Microsoft YaHei", sans-serif;
     background: linear-gradient(135deg, #ffd6e7, #ffe9c9, #dff5ff);
+} */
+
+body {
+    min-height: 100vh;
+    margin: 0;
+    font-family: "Microsoft YaHei", sans-serif;
+    background: linear-gradient(135deg, #ffd6e7, #ffe9c9, #dff5ff);
+
+    /* PC / SP 都允许页面滚动 */
+    overflow-x: hidden;
+    overflow-y: auto;
 }
 
-.birthday-container {
+/* .birthday-container {
     position: relative;
     width: 90%;
     max-width: 700px;
@@ -23,6 +34,19 @@ body {
     background: rgba(255, 255, 255, 0.75);
     border-radius: 30px;
     box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+} */
+
+.birthday-container {
+    position: relative;
+    width: 90%;
+    max-width: 700px;
+    margin: 50px auto;
+    padding: 50px 30px;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.75);
+    border-radius: 30px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+    z-index: 10;
 }
 
 h1 {
@@ -151,5 +175,345 @@ button:hover {
 
     .birthday-container {
         padding: 40px 20px;
+    }
+}
+
+/* ===== 礼物 ===== */
+
+.gift-container {
+    margin: 25px 0;
+}
+
+.gift-box {
+    font-size: 100px;
+    cursor: pointer;
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+
+.gift-box:hover {
+    transform: scale(1.15) rotate(5deg);
+}
+
+.gift-box.open {
+    animation: giftOpen 0.8s ease forwards;
+}
+
+.gift-text {
+    margin-top: 10px;
+    font-size: 16px;
+    color: #888;
+}
+
+@keyframes giftOpen {
+    0% {
+        transform: scale(1) rotate(0);
+    }
+
+    40% {
+        transform: scale(1.3) rotate(-10deg);
+    }
+
+    70% {
+        transform: scale(1.3) rotate(10deg);
+    }
+
+    100% {
+        transform: scale(0);
+        opacity: 0;
+    }
+}
+
+
+/* ===== 爱心 ===== */
+
+.falling-heart {
+    position: fixed;
+    top: -50px;
+    z-index: 9999;
+    pointer-events: none;
+    font-size: 25px;
+    animation: heartFall linear forwards;
+}
+
+@keyframes heartFall {
+    0% {
+        transform: translateY(-50px) rotate(0deg);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(110vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* ===== 烟花 ===== */
+
+.firework {
+    position: fixed;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 10000;
+    animation: fireworkExplode 1.2s ease-out forwards;
+}
+
+@keyframes fireworkExplode {
+    0% {
+        transform: translate(0, 0);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translate(
+            var(--x),
+            var(--y)
+        );
+        opacity: 0;
+    }
+}
+
+/* ===== 烟花视频 ===== */
+
+.firework-video {
+    position: fixed;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    overflow: hidden;
+    background: transparent;
+}
+
+.firework-video video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 1;
+}
+
+.firework-video.hidden {
+    display: none;
+}
+
+.birthday-container {
+    position: relative;
+    z-index: 10;
+}
+
+/* ===== 生日照片 ===== */
+
+.photo-section {
+    margin-bottom: 25px;
+}
+
+.birthday-photo {
+    width: 220px;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 6px solid white;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    animation: photoAppear 1s ease;
+}
+
+@keyframes photoAppear {
+    0% {
+        opacity: 0;
+        transform: scale(0.5) rotate(-10deg);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1) rotate(0);
+    }
+}
+
+@media (max-width: 600px) {
+    .birthday-photo {
+        width: 160px;
+        height: 160px;
+    }
+}
+
+/* ===== 写给你的话 ===== */
+
+.letter-text {
+    min-height: 150px;
+    max-width: 100%;
+    line-height: 2;
+    font-size: 18px;
+    color: #555;
+    white-space: pre-line;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+}
+
+.letter-cursor {
+    display: inline-block;
+    width: 2px;
+    height: 20px;
+    margin-left: 3px;
+    vertical-align: middle;
+    background: #ff6f91;
+    animation: cursorBlink 0.8s infinite;
+}
+
+@keyframes cursorBlink {
+    0%, 50% {
+        opacity: 1;
+    }
+
+    51%, 100% {
+        opacity: 0;
+    }
+}
+
+/* ===== 手机端优化 ===== */
+
+@media (max-width: 600px) {
+
+    body {
+        padding: 15px 0;
+        overflow-x: hidden;
+        overflow-y: auto;
+    }
+
+    .birthday-container {
+        width: calc(100% - 30px);
+        min-height: auto;
+        margin: 15px auto 40px;
+        padding: 35px 18px;
+        border-radius: 24px;
+    }
+
+    h1 {
+        font-size: 32px;
+        line-height: 1.4;
+    }
+
+    .subtitle {
+        font-size: 18px;
+        margin-bottom: 15px;
+    }
+
+    .cake {
+        font-size: 70px;
+        margin: 15px 0;
+    }
+
+    .gift-box {
+        font-size: 80px;
+    }
+
+    .gift-text {
+        font-size: 14px;
+    }
+
+    button {
+        width: 90%;
+        max-width: 280px;
+        padding: 14px 20px;
+        font-size: 16px;
+    }
+
+    #message {
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+}
+
+
+    #message h2 {
+        font-size: 22px;
+    }
+
+    #message p {
+    max-width: 100%;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+}
+
+    .birthday-photo {
+        width: 160px;
+        height: 160px;
+    }
+
+    .letter-text {
+    width: 100%;
+    max-width: 100%;
+    padding: 0 5px;
+    font-size: 15px;
+    line-height: 1.9;
+    text-align: left;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+}
+
+    .balloon {
+        font-size: 40px;
+    }
+
+    .balloon1 {
+        top: -25px;
+        left: 5px;
+    }
+
+    .balloon2 {
+        top: -20px;
+        right: 10px;
+    }
+
+    .balloon3 {
+        bottom: 10px;
+        left: -10px;
+    }
+
+    .firework-video video {
+        object-fit: cover;
+    }
+}   
+
+
+/* ===== 手机播放按钮 ===== */
+
+.music-control {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+
+    width: 50px;
+    height: 50px;
+
+    border: none;
+    border-radius: 50%;
+
+    background: rgba(0, 0, 0, 0.55);
+    color: white;
+
+    font-size: 22px;
+
+    cursor: pointer;
+    z-index: 9999;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    backdrop-filter: blur(5px);
+}
+
+.music-control.playing {
+    animation: musicRotate 2s linear infinite;
+}
+
+@keyframes musicRotate {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
     }
 }
