@@ -11,7 +11,54 @@ const letterText = document.getElementById("letterText");
 const bgMusic = document.getElementById("bgMusic");
 const musicControl = document.getElementById("musicControl");
 
+const birthdayPhoto = document.getElementById("photoSection");
+const modal = document.getElementById("blessingVideoModal");
+const video = document.getElementById("blessingVideo");
+const closeButton = document.getElementById("closeBlessingVideo");
+
 let musicPlaying = false;
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    if (!birthdayPhoto || !modal || !video || !closeButton) {
+        console.error("祝福视频所需的 HTML 元素不存在，请检查 ID。");
+        return;
+    }
+
+    // 点击旋转头像，打开并播放祝福视频
+    birthdayPhoto.addEventListener("click", function () {
+        modal.classList.add("show");
+        video.currentTime = 0;
+
+        video.play().catch(function (error) {
+            console.log("视频未能自动播放，请点击播放按钮。", error);
+        });
+    });
+
+    // 关闭视频
+    function closeBlessingVideo() {
+        video.pause();
+        video.currentTime = 0;
+        modal.classList.remove("show");
+    }
+
+    closeButton.addEventListener("click", closeBlessingVideo);
+
+    // 点击视频区域外侧也可以关闭
+    modal.addEventListener("click", function (event) {
+        if (event.target === modal) {
+            closeBlessingVideo();
+        }
+    });
+
+    // 按 Esc 键关闭视频
+    document.addEventListener("keydown", function (event) {
+        if (event.key === "Escape" && modal.classList.contains("show")) {
+            closeBlessingVideo();
+        }
+    });
+});
+
 
 button.addEventListener("click", function () {
 

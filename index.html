@@ -59,12 +59,23 @@
         </button>
 
         <div id="message" class="hidden">
-            <div class="photo-section">
+            <div id="photoSection" class="photo-section">
                 <img
                     src="images/birthday-photo.jpg"
                     alt="生日照片"
                     class="birthday-photo"
                 >
+            </div>
+            <!-- 祝福视频弹窗 -->
+            <div id="blessingVideoModal" class="blessing-video-modal">
+                <button id="closeBlessingVideo" class="close-blessing-video" type="button">
+                    ✕
+                </button>
+
+                <video id="blessingVideo" autoplay muted loop playsinline preload="auto">
+                    <source src="video/blessing.mp4" type="video/mp4">
+                    你的浏览器不支持视频播放。
+                </video>
             </div>
             <h2>✨ 写给你的话 ✨</h2>
             <p id="letterText" class="letter-text"></p>

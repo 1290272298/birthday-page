@@ -543,3 +543,76 @@ button:hover {
     object-fit: contain;
     border-radius: 12px;
 }
+
+
+
+/* 祝福视频弹窗 */
+.blessing-video-modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background: rgba(0, 0, 0, 0.92);
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* 弹窗显示时 */
+.blessing-video-modal.show {
+    display: flex;
+}
+
+/* 祝福视频 */
+#blessingVideo {
+    display: block;
+    width: 100%;
+    max-width: 900px;
+    max-height: 85vh;
+    object-fit: contain;
+}
+
+/* 关闭按钮 */
+
+.close-blessing-video {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    z-index: 10000;
+
+    width: 42px;
+    height: 42px;
+    padding: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: none;
+    border-radius: 50%;
+    background: #fff;
+    color: #000;
+
+    font-size: 24px;
+    line-height: 1;
+    text-align: center;
+    cursor: pointer;
+    box-sizing: border-box;
+}
+
+
+@media (max-width: 600px) {
+    .blessing-video-modal {
+        padding: 10px;
+    }
+
+    #blessingVideo {
+        max-height: 75vh;
+    }
+
+    .close-blessing-video {
+        top: 10px;
+        right: 10px;
+    }
+}
