@@ -10,16 +10,18 @@
 
 <body>
         <div id="fireworkVideo" class="firework-video hidden">
-            <video id="fireworkMovie" muted playsinline loop>
+            <video id="fireworkMovie" autoplay muted loop playsinlinepreload="auto">
                 <source src="video/birthday.mp4" type="video/mp4">
             </video>
         </div>
     <div class="birthday-container">
 
+        <div class="present-page">
         <div class="balloons">
             <div class="balloon balloon1">🎈</div>
             <div class="balloon balloon2">🎈</div>
             <div class="balloon balloon3">🎈</div>
+            <div class="balloon balloon4">🎈</div>
         </div>
 
         <h1>🎂 生日快乐！🎂</h1>
@@ -32,15 +34,17 @@
             🎂
         </div>
 
-        <!-- <div class="gift-container">
+        <div class="gift-container">
             <div id="giftBox" class="gift-box">
-                🎁
+                <video id="presentVideo" class="present-video" autoplay muted loop playsinlinepreload="auto">
+                    <source src="video/present.mp4" type="video/mp4">
+                </video>
             </div>
 
-            <p class="gift-text">
+            <!-- <p class="gift-text">
                 点击礼物，打开生日惊喜
-            </p>
-        </div> -->
+            </p> -->
+        </div>
 
         <button id="surpriseButton">
             🎁 打开礼物

@@ -140,6 +140,12 @@ button:hover {
     animation-delay: 2s;
 }
 
+.balloon4 {
+    bottom: 20px;
+    right: -20px;
+    animation-delay: 3s;
+}
+
 @keyframes float {
     0%, 100% {
         transform: translateY(0) rotate(-5deg);
@@ -520,4 +526,20 @@ button:hover {
     to {
         transform: rotate(360deg);
     }
+}
+
+
+.present-video-container {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.present-video {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-height: 65vh;
+    object-fit: contain;
+    border-radius: 12px;
 }

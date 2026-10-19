@@ -1,7 +1,7 @@
 const button = document.getElementById("surpriseButton");
 const message = document.getElementById("message");
 //const giftBox = document.getElementById("giftBox");
-
+const giftElements = document.querySelectorAll(".gift-container, .cake");
 const music = document.getElementById("birthdayMusic");
 const fireworkVideo = document.getElementById("fireworkVideo");
 const fireworkMovie = document.getElementById("fireworkMovie");
@@ -20,6 +20,9 @@ button.addEventListener("click", function () {
 
     // 按钮隐藏
     button.style.display = "none";
+    giftElements.forEach(function (element) {
+        element.classList.add("hidden");
+    });
 
     // 播放生日音乐
     //music.play();
@@ -204,7 +207,7 @@ function createFireworks() {
 function typeLetter() {
 
     const text =
-`生日快乐！🐭
+`小孩儿，生日快乐！
 
 新的一岁，希望你可以继续做自己喜欢的事情，
 去见想见的人，去看想看的风景。
