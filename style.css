@@ -325,6 +325,7 @@ button:hover {
     filter: none;
     animation: photoAppear 6s linear infinite;
     transform-origin: center center;
+    cursor: pointer;
 }
 
 @keyframes photoAppear {

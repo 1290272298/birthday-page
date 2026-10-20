@@ -2,7 +2,6 @@ const button = document.getElementById("surpriseButton");
 const message = document.getElementById("message");
 //const giftBox = document.getElementById("giftBox");
 const giftElements = document.querySelectorAll(".gift-container, .cake");
-const music = document.getElementById("birthdayMusic");
 const fireworkVideo = document.getElementById("fireworkVideo");
 const fireworkMovie = document.getElementById("fireworkMovie");
 
@@ -27,11 +26,15 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // 点击旋转头像，打开并播放祝福视频
     birthdayPhoto.addEventListener("click", function () {
+        pauseMusic();
+        musicControl.disabled = true;
         modal.classList.add("show");
+        video.muted = false;
+        video.volume = 1;
         video.currentTime = 0;
 
         video.play().catch(function (error) {
-            console.log("视频未能自动播放，请点击播放按钮。", error);
+            console.error("祝福视频播放失败：", error);
         });
     });
 
@@ -40,6 +43,7 @@ document.addEventListener("DOMContentLoaded", function () {
         video.pause();
         video.currentTime = 0;
         modal.classList.remove("show");
+        musicControl.disabled = false;
     }
 
     closeButton.addEventListener("click", closeBlessingVideo);
@@ -302,6 +306,9 @@ function typeLetter() {
 // 开始播放音乐
 // ==============================
 function playMusic() {
+    if (modal.classList.contains("show")) {
+        return;
+    }
 
     bgMusic.volume = 0.6;
 
