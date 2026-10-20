@@ -102,6 +102,26 @@ button:hover {
     color: #555;
 }
 
+.memory-name-link {
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    color: #ff4f7b;
+    background: transparent;
+    box-shadow: none;
+    font: inherit;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    cursor: pointer;
+}
+
+.memory-name-link:hover,
+.memory-name-link:focus-visible {
+    color: #d92c5b;
+    background: transparent;
+    transform: none;
+}
+
 .love {
     margin-top: 15px;
     font-weight: bold;
@@ -311,7 +331,22 @@ button:hover {
 /* ===== 生日照片 ===== */
 
 .photo-section {
+    position: relative;
+    display: inline-block;
     margin-bottom: 25px;
+    border-radius: 50%;
+    line-height: 0;
+}
+
+.photo-section::after {
+    position: absolute;
+    inset: -8px;
+    border: 4px solid #ff70b8;
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(255, 80, 170, 0.65);
+    content: "";
+    pointer-events: none;
+    animation: pinkPhotoGlow 1.5s ease-in-out infinite;
 }
 
 .birthday-photo {
@@ -326,6 +361,18 @@ button:hover {
     animation: photoAppear 6s linear infinite;
     transform-origin: center center;
     cursor: pointer;
+}
+
+@keyframes pinkPhotoGlow {
+    0%, 100% {
+        border-color: #ff9bce;
+        box-shadow: 0 0 8px rgba(255, 80, 170, 0.55);
+    }
+
+    50% {
+        border-color: #ff3f9f;
+        box-shadow: 0 0 22px 6px rgba(255, 60, 160, 0.8);
+    }
 }
 
 @keyframes photoAppear {
@@ -615,5 +662,350 @@ button:hover {
     .close-blessing-video {
         top: 10px;
         right: 10px;
+    }
+}
+
+
+/* ==============================
+   生日回忆时间轴
+   ============================== */
+
+.memory-timeline {
+    position: relative;
+    z-index: 2;
+    width: min(100% - 32px, 900px);
+    margin: 60px auto;
+    padding: 36px 0;
+    color: #fff;
+    box-sizing: border-box;
+}
+
+.memory-heading {
+    text-align: center;
+    margin-bottom: 28px;
+}
+
+.memory-eyebrow {
+    color: #f4b9dc;
+    letter-spacing: 4px;
+    font-size: 12px;
+}
+
+.memory-heading h2 {
+    font-size: clamp(24px, 5vw, 36px);
+    margin: 12px 0;
+    color: #ffe4f2;
+}
+
+.memory-intro {
+    color: #f1dce9;
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+.memory-toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    margin: 24px 0;
+    font-size: 13px;
+    color: #f7dbea;
+}
+
+.memory-toolbar button {
+    border: 1px solid rgba(255,255,255,.45);
+    border-radius: 24px;
+    padding: 10px 18px;
+    background: rgba(105, 36, 92, .8);
+    color: #fff;
+    cursor: pointer;
+}
+
+.memory-toolbar button:hover {
+    background: rgba(174, 67, 139, .9);
+}
+
+.memory-list {
+    position: relative;
+    padding: 8px 0;
+}
+
+/* 时间轴中间的竖线 */
+.memory-list::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 2px;
+    background: linear-gradient(
+        to bottom,
+        transparent,
+        #e8a9d5,
+        #bba9f7,
+        transparent
+    );
+    transform: translateX(-50%);
+}
+
+.memory-item {
+    position: relative;
+    width: 50%;
+    box-sizing: border-box;
+    padding: 12px 36px 28px 0;
+}
+
+.memory-item:nth-child(even) {
+    margin-left: 50%;
+    padding: 12px 0 28px 36px;
+}
+
+/* 时间轴节点 */
+.memory-item::before {
+    content: "";
+    position: absolute;
+    top: 30px;
+    right: -7px;
+    width: 12px;
+    height: 12px;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    background: #e7a6db;
+    box-shadow: 0 0 14px #e7a6db;
+    z-index: 1;
+}
+
+.memory-item:nth-child(even)::before {
+    right: auto;
+    left: -7px;
+}
+
+.memory-card {
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,.2);
+    border-radius: 16px;
+    background: rgba(37, 19, 48, .88);
+    box-shadow: 0 8px 24px rgba(0,0,0,.22);
+    backdrop-filter: blur(8px);
+}
+
+.memory-photo-button {
+    display: block;
+    width: 100%;
+    padding: 0;
+    border: 0;
+    background: #20142a;
+    cursor: zoom-in;
+    overflow: hidden;
+}
+
+.memory-photo {
+    display: block;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    transition: transform .4s ease;
+}
+
+.memory-photo-button:hover .memory-photo {
+    transform: scale(1.04);
+}
+
+.memory-card-content {
+    padding: 16px;
+}
+
+.memory-date {
+    color: #f2b8dc;
+    font-size: 12px;
+    letter-spacing: 1px;
+    margin: 0 0 8px;
+}
+
+.memory-card-title {
+    color: #fff0f8;
+    font-size: 18px;
+    margin: 0 0 10px;
+}
+
+.memory-card-text {
+    color: #e6d7e5;
+    font-size: 13px;
+    line-height: 1.8;
+    margin: 0;
+    overflow-wrap: anywhere;
+}
+
+.memory-open-hint {
+    margin-top: 12px;
+    color: #eab9dc;
+    font-size: 12px;
+}
+
+/* 照片放大弹窗 */
+.memory-lightbox {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 10000;
+    padding: 60px 18px 24px;
+    box-sizing: border-box;
+    background: rgba(10, 5, 18, .96);
+    overflow-y: auto;
+    align-items: center;
+    justify-content: center;
+}
+
+.memory-lightbox.is-open {
+    display: flex;
+}
+
+.memory-viewer {
+    width: min(100%, 680px);
+    text-align: center;
+    margin: auto;
+    color: #fff;
+}
+
+.memory-viewer img {
+    display: block;
+    max-width: 100%;
+    max-height: 60vh;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    margin: 0 auto 18px;
+    border-radius: 10px;
+    box-shadow: 0 0 30px rgba(225, 151, 222, .15);
+}
+
+.memory-viewer h3 {
+    color: #ffe1f2;
+    font-size: 23px;
+    margin: 8px 0;
+}
+
+.memory-viewer p {
+    line-height: 1.8;
+    overflow-wrap: anywhere;
+}
+
+#memoryLargeDate,
+#memoryLargeCount {
+    color: #e8b6d9;
+    font-size: 13px;
+}
+
+#memoryLargeText {
+    color: #eee0ed;
+    font-size: 14px;
+}
+
+.memory-close,
+.memory-nav {
+    position: fixed;
+    z-index: 10001;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    background: rgba(255,255,255,.15);
+    border: 1px solid rgba(255,255,255,.4);
+    cursor: pointer;
+}
+
+.memory-close {
+    top: 16px;
+    right: 16px;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    border-radius: 50%;
+    font-size: 28px;
+    line-height: 1;
+}
+
+.memory-nav {
+    top: 50%;
+    width: 42px;
+    height: 56px;
+    border-radius: 12px;
+    font-size: 36px;
+    transform: translateY(-50%);
+}
+
+.memory-prev {
+    left: 10px;
+}
+
+.memory-next {
+    right: 10px;
+}
+
+/* 手机端：单列时间轴 */
+@media (max-width: 600px) {
+    .memory-timeline {
+        width: calc(100% - 24px);
+        margin: 36px auto;
+        padding: 24px 0;
+    }
+
+    .memory-list::before {
+        left: 8px;
+    }
+
+    .memory-item,
+    .memory-item:nth-child(even) {
+        width: 100%;
+        margin-left: 0;
+        padding: 10px 0 24px 30px;
+    }
+
+    .memory-item::before,
+    .memory-item:nth-child(even)::before {
+        left: 1px;
+        right: auto;
+    }
+
+    .memory-card-content {
+        padding: 13px;
+    }
+
+    .memory-card-title {
+        font-size: 16px;
+    }
+
+    .memory-toolbar {
+        font-size: 12px;
+    }
+
+    .memory-toolbar button {
+        padding: 9px 12px;
+    }
+
+    .memory-lightbox {
+        padding: 64px 14px 24px;
+    }
+
+    .memory-viewer img {
+        max-height: 55vh;
+    }
+
+    .memory-nav {
+        position: absolute;
+        top: auto;
+        bottom: 12px;
+        transform: none;
+        width: 42px;
+        height: 42px;
+    }
+
+    .memory-prev {
+        left: calc(50% - 52px);
+    }
+
+    .memory-next {
+        right: calc(50% - 52px);
     }
 }

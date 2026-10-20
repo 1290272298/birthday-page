@@ -85,6 +85,59 @@
             </p>
         </div>
 
+        
+<!-- 生日回忆时间轴 -->
+<section id="memoryTimeline" class="memory-timeline hidden">
+    <div class="memory-heading">
+        <p class="memory-eyebrow">OUR MEMORIES</p>
+        <h2>一路走来的美好回忆</h2>
+        <p class="memory-intro">每一张照片，都藏着一段珍贵的故事。</p>
+    </div>
+
+    <div class="memory-toolbar">
+        <span id="memoryCounter">共 6 段回忆</span>
+        <button id="memoryPlayBtn" type="button">
+            ▶ 自动播放
+        </button>
+    </div>
+
+    <div id="memoryList" class="memory-list">
+        <!-- 照片卡片由 script.js 自动生成 -->
+    </div>
+</section>
+
+<!-- 照片放大弹窗：独立于原有祝福视频弹窗 -->
+<div id="memoryLightbox"
+     class="memory-lightbox"
+     role="dialog"
+     aria-modal="true"
+     aria-label="照片回忆">
+
+    <button id="memoryClose"
+            class="memory-close"
+            type="button"
+            aria-label="关闭照片">×</button>
+
+    <button id="memoryPrev"
+            class="memory-nav memory-prev"
+            type="button"
+            aria-label="上一张">‹</button>
+
+    <div class="memory-viewer">
+        <img id="memoryLargeImage" src="" alt="">
+        <p id="memoryLargeDate"></p>
+        <h3 id="memoryLargeTitle"></h3>
+        <p id="memoryLargeText"></p>
+        <p id="memoryLargeCount"></p>
+    </div>
+
+    <button id="memoryNext"
+            class="memory-nav memory-next"
+            type="button"
+            aria-label="下一张">›</button>
+</div>
+
+
     </div>
 
     <script src="script.js"></script>
