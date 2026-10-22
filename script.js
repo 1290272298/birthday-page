@@ -385,32 +385,32 @@ musicControl.addEventListener("click", function (event) {
     const memories = [
         {
             src: "images/memory-01.jpg",
-            date: "2024.01",
+            date: "2025.02",
             title: "第一次留下的回忆",
             text: "那一天的点点滴滴，现在想起来依然很温暖。"
         },
         {
             src: "images/memory-02.jpg",
-            date: "2024.03",
-            title: "一起度过的时光",
-            text: "平凡的小事，也成为了珍贵的回忆。"
+            date: "2025.02",
+            title: "我们结婚啦",
+            text: "结婚证拿到手的那一刻，心里满满的幸福。"
         },
         {
             src: "images/memory-03.jpg",
-            date: "2024.06",
+            date: "2025.03",
             title: "开心的一天",
-            text: "希望这样的笑容，可以一直延续下去。"
+            text: "绑定关系啦！"
         },
         {
             src: "images/memory-04.jpg",
-            date: "2024.09",
+            date: "2025.04",
             title: "难忘的瞬间",
             text: "每一次相遇，都值得好好珍惜。"
         },
         {
             src: "images/memory-05.jpg",
-            date: "2025.01",
-            title: "新的回忆",
+            date: "2025.05",
+            title: "可爱的回忆",
             text: "感谢一路上的陪伴，让生活变得更加美好。"
         },
         {
